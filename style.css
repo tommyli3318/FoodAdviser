@@ -6,6 +6,10 @@ body {
     margin: 0;
 }
 
+form {
+    text-align: center;
+}
+
 h1 {
     font-size: xx-large;
     text-align: center;

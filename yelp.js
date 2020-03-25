@@ -2,12 +2,21 @@ const key = 'w74MySzCEyDtQ5dUjKFrkdeAU5Y86Ed6Qp2qKpwGn4_Pj-9cd8hJXGEmwkiUiCzGeCU
 const proxy = 'https://cors-proxy-tommyli3318.herokuapp.com/'; // Work around CORS error
 const endpoint = 'https://api.yelp.com/v3/businesses/search';
 
-function yelp(query) {
+function search() {
+    navigator.geolocation.getCurrentPosition(searchUsingLatLon); // success callback
+}
+
+function searchUsingLatLon(position) {
+    yelp(document.getElementById("searchbar").value, position.coords.latitude, position.coords.longitude);
+}
+
+function yelp(query, lat, lon) {
     const params = {
         'term': query,
         'limit': 10,
         'radius': 10000,
-        'location': 'pomona'
+        'latitude': lat,
+        'longitude': lon
     };
     
     var requestObj = {
@@ -21,7 +30,7 @@ function yelp(query) {
         .done(response => {
             console.log(response);
             formatHTML(response.businesses);
-        });    
+        });
 }
 
 function formatHTML(businesses) {
@@ -38,8 +47,4 @@ function businessTemplate(business) {
         <h2 class="business-name">${business.name}</h2>
     </div>
     `
-}
-
-function search() {
-    yelp(document.getElementById("searchbar").value)
 }
