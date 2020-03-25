@@ -3,12 +3,21 @@
     <head>
         <meta charset="utf-8">
         <title>Food Adviser</title>
+        <link rel="stylesheet" href="style.css">
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"
                 integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
                 crossorigin="anonymous"></script>        
     </head>
     
+<!-- TODO: For now, sort by rating and distance, maybe add options later? -->
+
     <body>
+        <form>
+            <label>Search for food or drinks:</label>
+            <input type="text" id="searchbar"><br><br>
+            <input type="button" value="Search" onclick="search()" />
+        </form>
+
         <div id="app"></div>
     </body>
 
