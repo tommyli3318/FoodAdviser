@@ -26,6 +26,7 @@ function yelp(query, lat, lon) {
         dataType: 'json'
     };
     
+    // change to use fetch() instead
     $.ajax(requestObj)
         .done(response => {
             console.log(response);
